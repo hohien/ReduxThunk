@@ -8,6 +8,11 @@ import {UserItem} from './UserItem';
 import {fetchingUsers} from '../../../actions/FetchingUserAction';
 import {connect} from 'react-redux';
 class UserFlatList extends Component {
+
+    componentDidMount(){
+        this.props.fetchingUsers();
+    }
+
     render() {
         return (
             <FlatList
@@ -33,9 +38,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FCFF',
   },
 });
+
 function mapStateToProps (state){
     return {
         userData:state.userList,
     }
 }
+
 export default connect(mapStateToProps,{fetchingUsers}) (UserFlatList);
